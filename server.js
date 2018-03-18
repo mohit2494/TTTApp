@@ -13,24 +13,32 @@ app.use(express.static(__dirname+'/public'));
 app.get('/contactlist',function(req,res){
 	
 	console.log("GET REQUEST RECEIVED..");
-	console.log("FETCH TOP " + req.query.number + "WORDS");
+	console.log("FETCH TOP " + req.query.number + " WORDS");
 	var frequency = req.query.number;
-
-	// SEND A REQUEST TO SPECIFIED URL
+	var result = {};
+	result = [{error:""}];
+	var resultArray = [];
+	
+	if(req.query.number == null)
+		{
+			result[0].error = 'Input is not defined! Please try again with a valid number!';
+			/********** SEND BACK RESULT ****/
+			res.json(result);
+		}
+	else
+	{
+		// SEND A REQUEST TO SPECIFIED URL
 	request({
     	url: url,
    		json: true
 	}, function (error, response, body) {
-	
-		if (!error && response.statusCode === 200) {
-			
+		 if (!error && response.statusCode === 200 ) {
 			
 			var myString = JSON.parse(JSON.stringify(body));
 			var myString1 = myString.replace("’","'");
 			var bodySanitised = myString1.replace(/[^a-z’|'A-Z ]/g," ").toUpperCase();
 			var bodySplit = bodySanitised.split(" ");
-			var result = {};
-			var resultArray = [];
+			
 			
 			/**************** FIND FREQUENCY OF EACH STRING : OBJECT HASH ************/
 			for(var i = 0; i < bodySplit.length ; i++)
@@ -62,18 +70,17 @@ app.get('/contactlist',function(req,res){
    					 return b[1] - a[1];
 			});
 			/*********** LOG TOP 'N' WORDS ******************************/
-			console.log(resultArray.slice(0,frequency));
-
-			result = [{error:""}];
+			console.log(resultArray);
 
 			/********** CASE WHEN 'N' EXCEEDS TOTAL NUMBER OF WORDS *******/
 			if(frequency>resultArray.length)
 				result[0].error = "The total number of words stemmed are : " + resultArray.length+" ! Please enter a lesser number !";
 			else{
-				for(var i = 0 ; i < frequency ; i++)
+				for(var i = 1 ; i <= frequency ; i++)
 				{
 					console.log("Word: "+resultArray[i][0]);
-					var word = resultArray[i][0];
+					var word = resultArray[i][0].charAt(0).toUpperCase()+
+					resultArray[i][0].substr(1).toLowerCase();
 					var freq = resultArray[i][1];
 					result.push({
 						name: word,
@@ -86,6 +93,8 @@ app.get('/contactlist',function(req,res){
 	    }
 	})
 
+	}
+	
 });
 
 /************** SET LISTENER PORT **************/

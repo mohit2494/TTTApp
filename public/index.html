@@ -49,7 +49,8 @@
 									name="number"
 									ng-model-options="{updateOn : 'change blur'}"
 									ng-change = "getWords($event,number)"
-									ng-maxlength="maxLength">
+									ng-maxlength="maxLength"
+									ng-required="true">
 							</form>
 							<br><br>
 							<!-- SUCCESS DIV -->
@@ -98,7 +99,7 @@
 						</thead>
 						<tbody>
 							<tr ng-repeat="word in wordList|filter:searchWord|filter:searchFreq">
-								<td>{{word.name | lowercase}}</td>
+								<td>{{word.name}}</td>
 								<td>{{word.freq}}</td>
 							</tr>
 						</tbody>
