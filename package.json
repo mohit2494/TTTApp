@@ -1,0 +1,19 @@
+{
+  "name": "tttapp",
+  "version": "1.0.0",
+  "description": "This application will find all the words in a given text file with frequency 'N'",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mohit Kalra",
+  "license": "ISC",
+  "engines": {
+    "node": "6.10.2"
+  },
+  "dependencies": {
+    "angular": "^1.6.9",
+    "express": "^4.16.3",
+    "request": "^2.85.0"
+  }
+}
