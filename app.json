@@ -1,0 +1,7 @@
+{
+	"name": "Node.js is getting started",
+	"description" : "TTTApp for software developer position",
+	"repository" : "https://github.com/mohit2494/TTTApp",
+	"keywords" : ["node","express","static"],
+	"image" : "heroku/nodejs"
+}
