@@ -2,8 +2,7 @@
 var express = require('express'),
 	app = express(),
 	request = require('request'),
-	url = "http://terriblytinytales.com/test.txt",
-	utf8 = require('utf8');
+	url = "http://terriblytinytales.com/test.txt";
 
 /********* SERVING STATIC FILES ************/
 app.use(express.static(__dirname+'/public'));
