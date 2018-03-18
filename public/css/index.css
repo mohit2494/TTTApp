@@ -1,0 +1,58 @@
+html,body{
+	background-color: #F2F1EF;
+	color:black;
+	text-align: center;
+	padding:0px;
+}
+.jumbotron{
+	background-color: black;
+	color: white;
+}
+.jumbotron img{
+	float: left;
+	height: 25%;
+	width: 30%;
+}
+th{
+	text-align: center;
+}
+h1{
+	text-align: left;
+	padding-left: 5%;
+	padding-top:9%;
+}
+
+h4{
+	text-align: center;
+}
+
+.alert span{
+	float:right;
+}
+
+@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+
+.fade-in {
+  opacity:0;
+  -webkit-animation:fadeIn ease-in 1;
+  -moz-animation:fadeIn ease-in 1;
+  animation:fadeIn ease-in 1;
+
+  -webkit-animation-fill-mode:forwards;
+  -moz-animation-fill-mode:forwards;
+  animation-fill-mode:forwards;
+
+  -webkit-animation-duration: 0.5s;
+  -moz-animation-duration:0.5s;
+  animation-duration:0.5s;
+}
+
+#searchCheck {
+	color: green;
+}
+
+#searchDanger {
+	color: red;
+}
