@@ -4,6 +4,9 @@ var express = require('express'),
 	request = require('request'),
 	url = "http://terriblytinytales.com/test.txt";
 
+/********* SET PORT FOR LISTENTING ************/
+app.use('port',(process.env.PORT || 5000));
+
 /********* SERVING STATIC FILES ************/
 app.use(express.static(__dirname+'/public'));
 
@@ -88,5 +91,6 @@ app.get('/contactlist',function(req,res){
 });
 
 /************** SET LISTENER PORT **************/
-app.listen(3000);
-console.log('SERVER RUNNING ON PORT : 3000 !!!');
+app.listen(app.get('port'),function(){
+	console.log('SERVER RUNNING ON PORT :'+ app.get('port'));
+});
